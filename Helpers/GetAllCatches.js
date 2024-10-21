@@ -13,7 +13,8 @@ const GetAllCatches = () => {
                     const fish = data[id];
                     if (fish.location) {
                         catchArray.push({
-                            fishId: id,
+                            id: id,
+                            fishId: fish.fishId,
                             date: fish.date,
                             kg: fish.kg,
                             length: fish.length,
@@ -26,7 +27,8 @@ const GetAllCatches = () => {
                     }
                     if (!fish.location) {
                         catchArray.push({
-                            fishId: id,
+                            id: id,
+                            fishId: fish.fishId,
                             date: fish.date,
                             kg: fish.kg,
                             length: fish.length,

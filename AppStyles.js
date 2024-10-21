@@ -166,7 +166,15 @@ const styles = StyleSheet.create({
 
     dateTimePickerContainer: {
       alignItems: 'center',
-  },
+    },
+
+    buttonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      width: '100%',
+      marginTop: 20,
+    },
+
 });
 
 export default styles;

@@ -6,6 +6,7 @@ import NewFishButton from "./NewFishButton";
 import FishList from "./FishList";
 import NewFishForm from "./NewFishForm";
 import GetAllCatches from "../Helpers/GetAllCatches";
+import calculateFishingScores from "../Helpers/CalculateFishingScore";
 
 
 const Fishes = () => {
@@ -31,16 +32,20 @@ const Fishes = () => {
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
 
+    const fisherScore = calculateFishingScores(myFishes);
+
     return (
         <PaperProvider>
             <AppBarTop 
                 pageTitle={pageTitle}
+                fisherScore={fisherScore}
+                isCatchList={isCatchList}
             />
             <Portal>
                 <NewFishForm hideModal={hideModal} visible={visible} setMyFishes={setMyFishes} myFishes={myFishes} />
             </Portal>
 
-            <FishList fishes={myFishes} isCatchList={isCatchList} />
+            <FishList fishes={myFishes} isCatchList={isCatchList} setMyFishes={setMyFishes} />
 
             <NewFishButton showModal={showModal} />
 
