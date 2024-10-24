@@ -1,5 +1,6 @@
 import { FAB } from "react-native-paper";
-import styles from "../AppStyles";
+
+import styles from "../../AppStyles";
 
 const NewFishButton = ({ showModal }) => {
     return (

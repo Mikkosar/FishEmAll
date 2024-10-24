@@ -1,7 +1,8 @@
-import React from 'react';
 import { List, RadioButton } from 'react-native-paper';
 
-const FishPicker = ({ allFishes, species, setSpecies, setFishId, setImg }) => {
+import React from 'react';
+
+const FishPicker = ({ allFishes, species, setSpecies, setFishId}) => {
     return (
         <List.Section>
             <List.Subheader>Pick a Fish *</List.Subheader>
@@ -12,7 +13,6 @@ const FishPicker = ({ allFishes, species, setSpecies, setFishId, setImg }) => {
                     onPress={() => {
                         setSpecies(fish.species);
                         setFishId(fish.id);
-                        setImg(fish.img);
                     }}
                     right={() => (
                         <RadioButton

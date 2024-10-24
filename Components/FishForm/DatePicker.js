@@ -1,9 +1,8 @@
-import React from 'react';
 import { View } from 'react-native';
+
+import React from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import styles from '../../AppStyles';
-
-
 
 const DatePicker = ({ date, handleNewDate }) => {
     

@@ -1,5 +1,5 @@
 import { View, FlatList } from "react-native";
-import { IconButton, Card, Text, Portal, Modal } from "react-native-paper";
+import { Card, Text, Portal } from "react-native-paper";
 import { useState } from "react";
 
 import styles from "../AppStyles";
@@ -27,7 +27,7 @@ const FishList = ({ fishes, infoPage, isCatchList, setMyFishes }) => {
             <Portal>
                 <FishInfo fishes={fishes} setMyFishes={setMyFishes} hideModal={hideModal} data={data} visible={visible} infoPage={infoPage} isCatchList={isCatchList}/>
             </Portal>
-            {fishes && (
+            {fishes.length > 0 ? (
                 <FlatList
                     style={styles.fishList}
                     contentContainerStyle={styles.listContentContainer}
@@ -43,7 +43,14 @@ const FishList = ({ fishes, infoPage, isCatchList, setMyFishes }) => {
                         </Card>
                     }
                 />
+            ) : (
+                <View style={styles.emptyContainer}>
+                    <Text variant="bodyLarge">
+                        Go Fish
+                    </Text>
+                </View>
             )}
+
         </View>
     );
 };

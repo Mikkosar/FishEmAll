@@ -1,14 +1,14 @@
 import { Card, Modal, Text } from "react-native-paper";
 import MapView, { Marker } from 'react-native-maps';
 import { View, ScrollView } from "react-native";
-import styles from "../AppStyles";
 
 import GetImages from "../Helpers/GetAllIMages";
-import DeleteButton from "./DeleteButton";
-import EditButton from "./EditButton";
+import DeleteButton from "./Buttons/DeleteButton";
+import EditButton from "./Buttons/EditButton";
 import DeleteCatchById from "../Helpers/DeleteCatchById";
+import styles from "../AppStyles";
 
-const FishInfo = ({fishes, setMyFishes, visible, hideModal, data, infoPage, isCatchList }) => {
+const FishInfo = ({fishes, setMyFishes, visible, hideModal, data, infoPage }) => {
 
     const images = GetImages();
 

@@ -1,6 +1,7 @@
-import React from 'react';
 import { View } from 'react-native';
 import { TextInput } from 'react-native-paper';
+
+import React from 'react';
 import styles from '../../AppStyles';
 
 const DimensionsInput = ({ weight, setWeight, length, setLength }) => (

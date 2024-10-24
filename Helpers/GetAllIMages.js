@@ -4,7 +4,6 @@ const GetImages = () => {
         Lohi: require('../Images/LohiBNG.png'),
         Hauki: require('../Images/HaukiBNG.png'),
     };
-
     return (images);
 }
 

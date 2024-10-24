@@ -1,19 +1,18 @@
 import { Card, Modal, FAB } from "react-native-paper";
 import { ScrollView, TouchableWithoutFeedback, Keyboard, View, Alert } from "react-native";
-import styles from "../AppStyles";
-import { useEffect, useState } from "react";
-import GetAllFishes from "../Helpers/GetAllFishes"
-
 import { app } from "../firebaseConfig";
-import { getDatabase, ref, push, onValue } from "firebase/database";
+import { getDatabase, ref, push } from "firebase/database";
+import { useState } from "react";
+
 import FishPicker from "./FishForm/FishPicker";
 import DatePicker from "./FishForm/DatePicker";
 import DimensionsInput from "./FishForm/DimensionsInput";
 import LocationToggle from "./FishForm/LocationToggle";
+import styles from "../AppStyles";
 
 const db = getDatabase(app);
 
-const NewFishForm = ({ hideModal, visible, setMyFishes, myFishes }) => {
+const NewFishForm = ({ hideModal, visible, setMyCatches, myCatches, allFishes }) => {
 
     const location = {
         latitude: 60.200692,
@@ -24,27 +23,12 @@ const NewFishForm = ({ hideModal, visible, setMyFishes, myFishes }) => {
 
     const [isSwitchOn, setIsSwitchOn] = useState(false);
     const [date, setDate] = useState(new Date());
-    const [img, setImg] = useState('');
     const [species, setSpecies] = useState('');
     const [fishId, setFishId] = useState('');
     const [newDate, setNewDate] = useState('');
     const [weight, setWeight] = useState('');
     const [length, setLength] = useState('');
     const [markerLocation, setMarkerLocation] = useState(null);
-
-    const [allFishes, setAllFishes] = useState([]);
-
-    useEffect(() => {
-        const fetchFishes = async () => {
-            try {
-                const fishes = await GetAllFishes();
-                setAllFishes(fishes);
-            } catch (error) {
-                console.error("Virhe kalatietojen hakemisessa:", error);
-            }
-        };
-        fetchFishes();
-    }, []);
 
     const getCurrentDateFormatted = () => {
         const date = new Date();
@@ -87,6 +71,7 @@ const NewFishForm = ({ hideModal, visible, setMyFishes, myFishes }) => {
                 length: length === '' ? '?cm' : length + ' cm',
                 location: markerLocation ? markerLocation : null
             };
+            console.log(fishData)
             try {
                 const fishRef = await push(ref(db, "catches/"), fishData);
                 
@@ -95,7 +80,7 @@ const NewFishForm = ({ hideModal, visible, setMyFishes, myFishes }) => {
                     ...fishData
                 };
     
-                setMyFishes([...myFishes, fishWithId]);
+                setMyCatches([fishWithId, ...myCatches]);
 
                 setSpecies('');
                 setNewDate('');
@@ -135,7 +120,7 @@ const NewFishForm = ({ hideModal, visible, setMyFishes, myFishes }) => {
                 <View style={styles.modalContent}>
                     <Card style={styles.modalCardContainerNewFish}>
                         <ScrollView style={styles.ScrollView} overScrollMode="never" >
-                            <FishPicker allFishes={allFishes} species={species} setSpecies={setSpecies} setFishId={setFishId} setImg={setImg} />
+                            <FishPicker allFishes={allFishes} species={species} setSpecies={setSpecies} setFishId={setFishId} />
                         </ScrollView>
                     </Card>
                     <Card style={styles.modalCardContainer}>

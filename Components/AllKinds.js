@@ -1,29 +1,14 @@
-import { PaperProvider, Text } from "react-native-paper";
-import { useEffect, useState } from "react";
+import { useData } from "../Helpers/DataProvider";
+import { PaperProvider } from "react-native-paper";
 
 import FishList from "./FishList";
 import AppBarTop from "./AppBarTop";
-
-import GetAllFishes from "../Helpers/GetAllFishes"
-
 
 const AllKinds = () => {
 
     const pageTitle = "All Kinds";
     const infoPage = true;
-    const [allFishes, setAllFishes] = useState([]);
-
-    useEffect(() => {
-        const fetchFishes = async () => {
-            try {
-                const fishes = await GetAllFishes();
-                setAllFishes(fishes);
-            } catch (error) {
-                console.error("Virhe kalatietojen hakemisessa:", error);
-            }
-        };
-        fetchFishes();
-    }, [])
+    const { allFishes } = useData();
 
     return (
         <PaperProvider>

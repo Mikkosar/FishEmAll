@@ -1,4 +1,3 @@
-import React from 'react';
 import { Text, View, Switch } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 

@@ -1,28 +1,15 @@
 import { PaperProvider } from "react-native-paper";
-import { useEffect, useState } from "react";
+import { useData } from "../Helpers/DataProvider";
+
 import AppBarTop from "./AppBarTop";
 import FishMapLocations from "./FishMapLocation";
-import GetAllCatches from "../Helpers/GetAllCatches";
 
 const FishMap = () => {
 
     const pageTitle = 'Fish Map';
+    const { myCatches } = useData();
 
-    const [myFishes, setMyFishes] = useState([]);
-
-    useEffect(() => {
-        const fetchCathces = async () => {
-            try {
-                const catches = await GetAllCatches();
-                setMyFishes(catches);
-            } catch (error) {
-                console.error("Virhe kalatietojen hakemisessa:", error);
-            }
-        };
-        fetchCathces();
-    }, []);
-
-    const catches = myFishes.map(fish => ({
+    const catches = myCatches.map(fish => ({
         cords: fish.location,
         title: fish.species,
         date: fish.date

@@ -4,9 +4,11 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import GetImages from "./GetAllIMages";
 const db = getDatabase(app);
 
-const GetAllImages = () => {
+const GetAllFishes = () => {
 
     const images = GetImages();
+
+    console.log(images)
 
     return new Promise((resolve, reject) => {
         const fishesRef = ref(db, 'fishes/');
@@ -20,7 +22,7 @@ const GetAllImages = () => {
                         id: id,
                         species: fish.species,
                         description: fish.description,
-                        img: images[fish.species.toLowerCase()],
+                        img: images[fish.species],
                     });
                 }
                 resolve(fishArray);
@@ -33,4 +35,4 @@ const GetAllImages = () => {
     });
 };
 
-export default GetAllImages;
+export default GetAllFishes;
