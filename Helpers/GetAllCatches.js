@@ -22,7 +22,8 @@ const GetAllCatches = () => {
                             location: {
                                 latitude: fish.location.latitude,
                                 longitude: fish.location.longitude
-                            }
+                            },
+                            userId: fish.userId
                         });
                     }
                     if (!fish.location) {
@@ -33,6 +34,7 @@ const GetAllCatches = () => {
                             kg: fish.kg,
                             length: fish.length,
                             species: fish.species,
+                            userId: fish.userId
                         });
                     }
                 }

@@ -14,7 +14,7 @@ const DimensionsInput = ({ weight, setWeight, length, setLength }) => (
             underlineColor="gray"
             activeUnderlineColor="black"
             value={weight}
-            onChangeText={setWeight}
+            onChangeText={weight => setWeight(weight)}
         />
         <TextInput
             mode={'flat'}
@@ -24,7 +24,7 @@ const DimensionsInput = ({ weight, setWeight, length, setLength }) => (
             underlineColor="gray"
             activeUnderlineColor="black"
             value={length}
-            onChangeText={setLength}
+            onChangeText={lenght => setLength(lenght)}
         />
     </View>
 );

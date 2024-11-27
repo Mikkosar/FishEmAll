@@ -7,11 +7,34 @@ import { DataProvider } from '../Helpers/DataProvider';
 import Fishes from './Fishes';
 import AllKinds from './AllKinds';
 import FishMap from './FishMap';
+import Login from './Login';
+import Settings from './Settings';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useEffect, useState } from 'react';
+
+import { auth } from '../firebaseConfig';
+import { onAuthStateChanged } from 'firebase/auth';
+import Authentication from './Authentication';
 
 const Navigator = () => {
-
+    const [user, setUser] = useState(null);
     const Tab = createBottomTabNavigator();
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+            } else {
+                setUser(null);
+            }
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    if (!user) {
+        return <Authentication />;
+    }
 
     return (
         <DataProvider>
@@ -100,6 +123,16 @@ const Navigator = () => {
                                 return <Icon name="fish" size={size} color={color} />;
                             },
 
+                        }}
+                    />
+                    <Tab.Screen
+                        name="Settings"
+                        component={Settings}
+                        options={{
+                            tabBarLabel: 'Settings',
+                            tabBarIcon: ({ color, size }) => {
+                                return <Icon name="cog" size={size} color={color} />;
+                            },
                         }}
                     />
                 </Tab.Navigator>

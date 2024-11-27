@@ -1,6 +1,6 @@
 import { Card, Modal, FAB } from "react-native-paper";
 import { ScrollView, TouchableWithoutFeedback, Keyboard, View, Alert } from "react-native";
-import { app } from "../firebaseConfig";
+import { app, auth } from "../firebaseConfig";
 import { getDatabase, ref, push } from "firebase/database";
 import { useState } from "react";
 
@@ -20,6 +20,8 @@ const NewFishForm = ({ hideModal, visible, setMyCatches, myCatches, allFishes })
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
     }
+
+    const user = auth.currentUser.uid;
 
     const [isSwitchOn, setIsSwitchOn] = useState(false);
     const [date, setDate] = useState(new Date());
@@ -69,9 +71,9 @@ const NewFishForm = ({ hideModal, visible, setMyCatches, myCatches, allFishes })
                 date: newDate === '' ? getCurrentDateFormatted() : newDate,
                 kg: weight === '' ? '?kg' : weight + ' kg',
                 length: length === '' ? '?cm' : length + ' cm',
-                location: markerLocation ? markerLocation : null
+                location: markerLocation ? markerLocation : null,
+                userId: user
             };
-            console.log(fishData)
             try {
                 const fishRef = await push(ref(db, "catches/"), fishData);
                 

@@ -180,6 +180,35 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
     },
+
+    settingsCardContainer: {
+      marginTop: '70%',
+      marginBottom: '90%',
+      paddingHorizontal: 50,
+      backgroundColor: 'lightgray',
+    },
+
+    loginCardContainer: {
+      paddingHorizontal: 100,
+      paddingVertical: 50,
+      backgroundColor: 'lightgray',
+    },
+
+    loginTextInputFormDetails: {
+      width: '100%',
+      backgroundColor: 'lightgray',
+      marginBottom: 10
+    },
+
+    button: {
+      marginTop: 10
+    },
+
+    signUpCardContainer: {
+      paddingHorizontal: 100,
+      paddingVertical: 50,
+      backgroundColor: 'lightgray',
+    }
 });
 
 export default styles;

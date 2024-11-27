@@ -8,8 +8,6 @@ const GetAllFishes = () => {
 
     const images = GetImages();
 
-    console.log(images)
-
     return new Promise((resolve, reject) => {
         const fishesRef = ref(db, 'fishes/');
         onValue(fishesRef, (snapshot) => {
