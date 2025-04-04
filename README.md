@@ -16,6 +16,26 @@ Tämä projekti on Mobiiliohjelmointi kurssin lopputyö.
 
 ---
 
+## Kuvakaappauksia sovelluksesta
+
+### Kirjautuminen
+![Kirjautumisnäkymä](screenshots/Login.JPG)
+
+### Etusivu
+![Etusivu](screenshots/Etusivu.JPG)
+
+### Karttanäkymä
+![Karttanäkymä](screenshots/Kartta.JPG)
+
+### Saaliin tiedot
+![Saaliin tiedot](screenshots/KalaTieto.JPG)
+
+### Kalainfo
+![Kalainfo näkymä](screenshots/KalaInfo.JPG)
+
+
+---
+
 ## Käytetyt teknologiat
 - **React Native**: Sovelluksen käyttöliittymän rakentamiseen.
 - **Expo**: Helpottaa sovelluksen kehittämistä ja testaamista.
